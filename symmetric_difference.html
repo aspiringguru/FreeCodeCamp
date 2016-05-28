@@ -1,0 +1,92 @@
+<!-- NB: symmetric difference for multiple sets, value is not in ALL sets. -->
+<!-- NBB: a value in symmetric difference can be in more > set but no in all sets. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<FORM NAME="myform" ACTION="" METHOD="GET">Enter two sets of integers (separated by space): <BR>
+<INPUT TYPE="text" NAME="array1" VALUE=""><P>
+<INPUT TYPE="text" NAME="array2" VALUE=""><P>
+Use single spaces only.<br>
+<INPUT TYPE="button" NAME="button" Value="Click" onClick="processForm(this.form)">
+</FORM>
+
+<p>Symmetric Difference:</p>
+<p id="calc"></p>
+
+<script>
+
+function processForm (form) {
+    var array1 = form.array1.value;
+    var array2 = form.array2.value;
+	console.log("array1=", array1);
+	console.log("array2=", array2);
+	//needs a proper 'replace multiple spaces with single space'
+	array1 = array1.trim();
+	array2 = array2.trim();
+	var array1Ints = array1.split(' ').map(Number);
+	var array2Ints = array2.split(' ').map(Number);
+	console.log("'", array1Ints, "'");
+	console.log("'", array2Ints,"'");
+	var temp = sym(array1Ints, array2Ints);
+	document.getElementById("calc").innerHTML = temp;
+}
+
+function sym(args) {
+	console.log("arguments.length=", arguments.length);
+	var results = symHelper(arguments[0], arguments[1]);
+	var counter = 2;
+	while (counter < arguments.length) {
+		console.log("counter=",counter, " calling symHelper(", results,", ", arguments[counter],")");
+		results = symHelper(results, arguments[counter]);
+		counter += 1;
+	}
+	console.log(results);
+	return results;
+};
+
+function symHelper(array1, array2){
+	var symmDiff = [];
+	console.log("symHelper(", arguments[0], ", ", arguments[1], ")" );
+	for (i=0; i<arguments[0].length; i++){
+		console.log(arguments[0][i]);
+		if (arguments[1].indexOf(arguments[0][i]) <0 && symmDiff.indexOf(arguments[0][i]) <0){
+		    symmDiff.push(arguments[0][i]);
+		    console.log("adding ", arguments[0][i]);
+			} else {
+				console.log("not adding ", arguments[0][i]);
+			}
+		}
+	for (i=0; i<arguments[1].length; i++){
+		console.log(arguments[1][i]);
+		if (arguments[0].indexOf(arguments[1][i])<0 && symmDiff.indexOf(arguments[1][i]) <0){
+		    symmDiff.push(arguments[1][i]);
+		    console.log("adding ", arguments[1][i]);
+			} else {
+				console.log("not adding ", arguments[1][i]);
+			}
+	}
+	console.log(symmDiff);
+	return symmDiff;
+}
+
+
+console.log("sym([1, 2, 5, 8, 9], [2, 3, 5], [3, 4, 5])");
+sym([1, 2, 5, 8, 9], [2, 3, 5], [3, 4, 5]);
+
+console.log("sym([1, 2, 5], [2, 3, 5], [3, 4, 5])");
+sym([1, 2, 5], [2, 3, 5], [3, 4, 5]);//should return [1, 4, 5]
+console.log("sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);");
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);//should return [1, 4, 5]
+console.log("sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);");
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);//should return [2, 3, 4, 6, 7].
+console.log("sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);");
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);//should contain only five elements
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1]);//should return [1, 2, 4, 5, 6, 7, 8, 9]
+
+</script>
+
+</body>
+</html>
+
