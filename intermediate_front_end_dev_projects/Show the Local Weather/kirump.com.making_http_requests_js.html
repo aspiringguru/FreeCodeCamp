@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- 
+refer  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
+run this from the directory containing the html to load python -m SimpleHTTPServer
+access 127.0.0.1:8000
+
+https://www.kirupa.com/html5/making_http_requests_js.htm
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange
+https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+api key = ac4bcbd029d597f5ac1f0dfd51d470b7
+bmt
+http://api.openweathermap.org/data/2.5/weather?APPID=ac4bcbd029d597f5ac1f0dfd51d470b7&q=Brisbane
+api.openweathermap.org/data/2.5/weather?q={city name}
+api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=1111111111 
+api.openweathermap.org/data/2.5/weather?q=Brisbane&APPID=ac4bcbd029d597f5ac1f0dfd51d470b7
+
+ -->
+<html>
+ 
+<head>
+  <title>Display IP Address</title>
+</head>
+ 
+<body>
+ 
+  <script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', "http://ipinfo.io/json", true);
+  xhr.send();
+  //xhr.addEventListener("readystatechange", processRequest, false);
+  xhr.onreadystatechange = processRequest;
+  var city, country;
+  function processRequest(e) {
+	  	if (xhr.readyState == 4 && xhr.status == 200) {
+	  		//XMLHttpRequest().readyState == 4 : Everything has completed
+	  		//XMLHttpRequest.status == 200 : http status is 'ok'
+			var response = JSON.parse(xhr.responseText);
+			alert("ipinfo.io/json loaded : "+response.ip);
+			console.log("ipinfo.io/json loaded : "+response.ip);
+			console.log("response.ip="+response.ip);
+			console.log("response.hostname="+response.hostname);
+			console.log("response.city="+response.city);
+			console.log("response.region="+response.region);
+			console.log("response.country="+response.country);
+			console.log("response.loc="+response.loc);
+			console.log("response.org="+response.org);
+			console.log("response.postal="+response.postal);
+			console.log("typeof response="+typeof response);
+			console.log("response.length="+response.length);//undefined
+			console.log("response['postal']="+response["postal"]);
+			city = response.city;
+			country = response.country;
+			  //now use location to obtain weather data
+			  var xhr2 = new XMLHttpRequest();
+			  var openweatherUrl = "http://api.openweathermap.org/data/2.5/weather?APPID=ac4bcbd029d597f5ac1f0dfd51d470b7&q="+city+","+country;
+			  console.log("openweatherUrl="+openweatherUrl);
+			  xhr2.open('GET', openweatherUrl, true);
+			  xhr2.send();
+			  xhr2.onreadystatechange = processRequest2;
+			  function processRequest2(e) {
+				  	if (xhr2.readyState == 4 && xhr2.status == 200) {
+				  		var response = JSON.parse(xhr2.responseText);
+						alert("json from api.openweathermap.org loaded");
+						console.log("json from api.openweathermap.org loaded");
+						console.log("xhr2.responseText="+xhr2.responseText);
+						console.log("response="+response);
+						console.log("typeof response="+typeof response);
+						console.log("response.length="+response.length);
+						console.log("response.coord="+response.coord);
+						console.log("response.coord.length="+response.coord.length);
+						console.log("response.weather="+response.weather);
+						console.log("response.weather.length="+response.weather.length);
+						console.log("response.base="+response.base);
+						console.log("response.main="+response.main);
+						console.log("response.wind="+response.wind);
+						console.log("response.clouds="+response.clouds);
+						console.log("response.dt="+response.dt);
+						console.log("response.sys="+response.sys);
+						console.log("response.id="+response.id);
+						console.log("response.name="+response.name);
+				  	}
+				}
+		}
+	}
+
+  </script>
+</body>
+blah<br>
+ 
+</html>
