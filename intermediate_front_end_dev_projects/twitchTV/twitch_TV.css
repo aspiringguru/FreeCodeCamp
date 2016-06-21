@@ -1,0 +1,51 @@
+.img-circle {
+    border-radius: 50%;
+    width: 40px;
+	height: 40px;
+}
+.live-streaming {
+	background-color: #99ff99;
+	height: 50px;
+	padding: 4px;
+}
+.not-streaming {
+	background-color: #ffffcc;
+	height: 50px;
+	padding: 4px;
+}
+.closed-streaming {
+	background-color: #ff9999;
+	height: 50px;
+	padding: 4px;
+}
+
+.table-header {
+	background-color: #e1e1d0;
+	height: 60px;
+}
+
+.buttonAll{
+	border-radius: 20%;
+}
+.buttonOnline{
+	background-color: #99ff99;
+	border-radius: 20%;
+}
+.buttonOffline{
+	background-color: #ffffcc;
+	border-radius: 20%;
+}
+.buttonClosed{
+	background-color: #ff9999;
+	border-radius: 20%;
+}
+
+
+/* 
+http://www.w3schools.com/colors/colors_picker.asp
+use 80% density colours.
+
+http://www.w3schools.com/css/css_boxmodel.asp
+padding is not producing the appearance desired.
+want to create a line or break between rows - improve readability. 
+*/
