@@ -1,0 +1,65 @@
+body{
+	background-color: #d1d1e0;
+}
+
+h1{
+	color: #ffbb99;
+}
+
+.quoteDisplay{
+	background-color: #3d3d29;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	border-radius: 10px;
+	border-color: white;
+	border-style: solid;
+}
+
+.quote{
+	font-size: 40px;
+	font-style: normal;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+	color: #ff6600;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.author{
+	font-size: 20px;
+	font-style: italic;
+	font-weight: lighter;
+	font-family: Impact, Charcoal, sans-serif;
+	color: #ffa366;
+}
+
+.btn {
+  background: #1f1f14;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #3e3e28;
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #5d5d3c;
+  text-decoration: none;
+}
+
+/*
+oh hi, thanks for checking my source code. You're welcome. 
+follow me on github https://github.com/aspiringguru
+useful references
+
+http://www.w3schools.com/colors/colors_picker.asp
+http://css3buttongenerator.com/
+
+#d1d1e0 - background color
+NB: author text color, fainter version of quote color
+*/
