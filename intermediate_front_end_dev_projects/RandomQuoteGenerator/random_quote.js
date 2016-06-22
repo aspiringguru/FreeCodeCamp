@@ -85,4 +85,13 @@ Todo
 2. Need to detect Chuck Norris's properly and replicate the 's with newChuckName.
 3. improve text shortening for twitter, drop vowels? 
 
+Thanks for reading the source. I know it's ugly. This was just a fun diversion.
+If you like it, feel free to share the link &/or give me some tips.
+
+Follow me on github.
+https://github.com/aspiringguru/FreeCodeCamp/tree/master/intermediate_front_end_dev_projects/RandomQuoteGenerator 
+
+Oh and I need a professional level mentor and a paid internship. Beer costs $.
+
+
 */
