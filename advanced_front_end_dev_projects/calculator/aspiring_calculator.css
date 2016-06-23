@@ -1,0 +1,71 @@
+/*
+Hi, thanks for checking the source code.
+Follow me on github.
+https://github.com/aspiringguru/FreeCodeCamp/tree/master/intermediate_front_end_dev_projects/RandomQuoteGenerator 
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.calcPanel {
+	text-align: center;
+	width: 320px;
+	height: 450px;
+	border-radius: 10px;
+	margin: auto;
+	background-color: #ffe6cc;
+	padding: 5px;
+}
+
+.textbox {
+	margin: 1.5px;
+	height: 48.5px;
+	width: 300px;
+	border-radius: 15px;
+	margin: 5px;
+
+}
+
+.buttonsArea{
+	text-align: center;
+	width: 300px;
+	background: #ffa64d;
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.button{
+	margin: 1.5px;
+	width: 48.5px;
+	height: 48.5px;
+	color: #ffcc99;
+	background: #663300;
+	border-radius: 15px;
+}
+
+.button-red {
+	color: red;
+}
+
+.button-green {
+	color: green;
+}
+
+
+.button-NAN {
+	background: #1a0d00;
+}
+
+
+.button:hover {
+  background: #5d5d3c;
+  text-decoration: none;
+}
+
+h1 {
+	color: #cc6600;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*
+iphone 4 screen is 320x480, other screens are larger.
+*/
