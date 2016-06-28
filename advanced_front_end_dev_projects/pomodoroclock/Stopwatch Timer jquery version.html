@@ -1,0 +1,88 @@
+<html>
+<head>
+	<style>
+	#output{
+		width:100px;
+		height:20px;
+		background-color:#CCC;
+		border: 1ps solid #666;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script>
+	var time=0;
+	var running=0;//stopwatch is running
+	$(document).ready(function(){
+		$("#reset").hide();
+		$("#startPause").click( function(){
+			//console.log("startPause() called");
+			//toggle run/pause state and update button html content.
+			if (running===0){
+				running=1;
+				increment();
+				document.getElementById("startPause").innerHTML = "Pause";
+				$("#reset").show();
+				$("#reset").text("Stop");
+			} else {//running is !=0 ie running=1
+				running=0;
+				document.getElementById("startPause").innerHTML = "Resume";
+				$("#reset").text("Reset");
+			}
+		});//end $("#startPause").click( function()
+		$("#reset").click( function(){
+			//reset to start conditions.
+			//console.log("reset() called with running="+running);
+			if (running===1){
+				//is running, stop the timer and display the current time.
+				running = 0;
+				$("#reset").text("Reset");
+			} else {
+				//is not running, reset time and display to zero, hide reset button, set start/pause button to start.
+				$("#output").text("00:00:00");
+				$("#startPause").text("Start");
+				$("#reset").hide();
+				time = 0;
+			}
+		});//end $("#reset").click( function()
+	});//end $(document).ready(function()
+	function increment(){
+		//console.log("increment() called");
+		if (running===1){
+			//console.log("running===1");
+			setTimeout(function(){
+				time++;
+				var mins = Math.floor(time/10/60);
+				if (mins<10){
+					mins = "0"+mins;
+				}
+				//div by 10 for tenths & div by 60 for minutes, then floor to integer.
+				var secs = Math.floor(time/10);
+				if (secs<10){
+					secs = "0"+secs;
+				}
+				//div by 10 for seconds, then floor to integer.
+				var tenths = time%10;
+				//mod returns remainder = tenths of second.
+				//console.log("mins="+mins+", secs="+secs+", tenths="+tenths);
+				$("#output").text(mins+":"+secs+":"+tenths+"0");
+				increment();//recursive call on function to update display.
+			}, 100);
+			//NB: setTimeout(code, [delay]); delay = time step in milliseconds.
+		}//end if (running===1)
+	}//end function increment()
+
+	</script>
+</head>
+<body>
+	<p id="output"></p>
+	<div id="controls">
+		<button id="startPause" >Start</button>
+		<button id="reset">Reset</button>
+	</div>
+</body>
+</html>
+
+<!--
+https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout
+
+-->
