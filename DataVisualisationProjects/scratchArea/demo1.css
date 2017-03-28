@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+
+.bar {
+  fill: blue
+  /* alternate colour assignment method */
+  /* fill: #0080FF */
+  /* assign border stroke  */
+  stroke: black;
+  stroke-width: 5
+}
+
+.bar:hover {
+  /* assign mouseover behaviour */
+  fill: red
+}
+
+.text {
+  fill: white;
+  font-family: sans-serif
+}
