@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Google Charts Tutorial - Candlestick</title>
+   <script type="text/javascript" src="loader.js"></script>
+   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script type="text/javascript">google.charts.load('current', {packages: ['corechart']});</script>
+</head>
+<body>
+<script language="JavaScript">
+// Load the Visualization API and the piechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+
+function drawChart() {
+
+   var jsonData = $.ajax({
+       url: "google_chart_import_json_example.json",
+       dataType: "json",
+       async: true
+       }).responseText;
+   console.log("jsonData = ", jsonData)
+   // Create our data table out of JSON data loaded from server.
+   var data = new google.visualization.DataTable(jsonData);
+   console.log("data = ", data)
+   console.log("data.pg = ", data.pg)
+   console.log("data.pg[0] = ", data.pg[0])
+   console.log("data.qg = ", data.qg)
+   console.log("data.qg[0] = ", data.qg[0])
+
+   // Instantiate and draw the chart.
+   var chart = new google.visualization.PieChart(document.getElementById('container'));
+   chart.draw(data, {width: 400, height: 240});
+   //var chart = new google.visualization.CandlestickChart(document.getElementById('container'));
+   //chart.draw(data, options);
+
+}
+google.charts.setOnLoadCallback(drawChart);
+</script>
+<div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
+</body>
+</html>
